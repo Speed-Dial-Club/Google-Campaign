@@ -3,22 +3,25 @@
 
 <head>
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5DZXEY4NBJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DZXEY4NBJ"></script>
 
-  gtag('config', 'G-5DZXEY4NBJ');
-</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-5DZXEY4NBJ');
+  </script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Leaderboard</title>
+  <title>Google Campaign</title>
 
-  <!-- CUSTOM FAVICON -->
   <link rel="icon" type="image/png" href="Favicon.png">
 
   <style>
@@ -33,7 +36,264 @@
       background: #0f0f0f;
       color: white;
       font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ===================================== */
+    /* HOME SCREEN */
+    /* ===================================== */
+
+    .home-screen {
+
+      position: fixed;
+      inset: 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      background: #0f0f0f;
+
+      z-index: 9999;
+
+      transition: opacity 0.6s ease;
+
+    }
+
+    .main-title {
+
+      font-size: 52px;
+      margin-bottom: 50px;
+
+    }
+
+    .home-options {
+
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+
+    }
+
+    .home-card {
+
+      width: 260px;
+      height: 180px;
+
+      background: #1a1a1a;
+
+      border: 1px solid #2b2b2b;
+
+      border-radius: 24px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 28px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition: 0.3s ease;
+
+      user-select: none;
+
+    }
+
+    .home-card:hover {
+
+      transform: scale(1.05);
+      background: #222;
+
+    }
+
+    /* ===================================== */
+    /* PASSWORD MODAL */
+    /* ===================================== */
+
+    .password-overlay {
+
+      position: fixed;
+      inset: 0;
+
+      backdrop-filter: blur(18px);
+
+      background: rgba(0,0,0,0.45);
+
+      display: none;
+
+      justify-content: center;
+      align-items: center;
+
+      z-index: 10000;
+
+      animation: fadeIn 0.3s ease;
+
+    }
+
+    .password-box {
+
+      width: 340px;
+
+      background: rgba(28, 28, 30, 0.88);
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      border-radius: 28px;
+
+      padding: 28px;
+
+      text-align: center;
+
+      backdrop-filter: blur(30px);
+
+      transition: 0.2s ease;
+
+    }
+
+    .password-title {
+
+      font-size: 22px;
+      margin-bottom: 18px;
+
+    }
+
+    .password-input {
+
+      width: 100%;
+
+      background: rgba(255,255,255,0.08);
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      border-radius: 16px;
+
+      padding: 16px 18px;
+
+      color: white;
+
+      outline: none;
+
+      font-size: 18px;
+
+      text-align: center;
+
+    }
+
+    .password-button {
+
+      margin-top: 18px;
+
+      width: 100%;
+
+      border: none;
+
+      border-radius: 16px;
+
+      padding: 14px;
+
+      background: white;
+
+      color: black;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition: 0.2s ease;
+
+    }
+
+    .password-button:hover {
+
+      transform: scale(1.02);
+
+    }
+
+    .shake {
+
+      animation: shake 0.35s ease;
+
+    }
+
+    @keyframes shake {
+
+      0% { transform: translateX(0px); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+      100% { transform: translateX(0px); }
+
+    }
+
+    @keyframes fadeIn {
+
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+
+    }
+
+    /* ===================================== */
+    /* APP */
+    /* ===================================== */
+
+    .hidden {
+      display: none;
+    }
+
+    #appContainer {
+
       padding: 40px 20px;
+
+      animation: fadeIn 0.5s ease;
+
+    }
+
+    .top-nav {
+
+      position: fixed;
+
+      top: 20px;
+      left: 20px;
+
+      display: flex;
+      gap: 12px;
+
+      z-index: 999;
+
+    }
+
+    .top-nav button {
+
+      background: #1d1d1d;
+
+      border: none;
+
+      color: white;
+
+      padding: 12px 18px;
+
+      border-radius: 14px;
+
+      cursor: pointer;
+
+      transition: 0.2s ease;
+
+    }
+
+    .top-nav button:hover {
+
+      background: #292929;
+
     }
 
     .container {
@@ -47,35 +307,51 @@
       font-size: 42px;
     }
 
-    /* ========================= */
-    /* LIVE STATS BAR */
-    /* ========================= */
+    /* ===================================== */
+    /* LIVE STATS */
+    /* ===================================== */
 
- .stats-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  margin-top: -10px;
-  margin-bottom: 25px;
-  flex-wrap: wrap;
-}
+    .stats-bar {
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      gap: 12px;
+
+      margin-top: -10px;
+      margin-bottom: 25px;
+
+      flex-wrap: wrap;
+
+    }
 
     .live-indicator {
+
       display: flex;
       align-items: center;
+
       gap: 8px;
+
       color: #aaa;
+
       font-size: 14px;
+
       letter-spacing: 1px;
+
     }
 
     .live-dot {
+
       width: 10px;
       height: 10px;
+
       background: red;
+
       border-radius: 50%;
+
       animation: pulse 1s infinite;
+
     }
 
     @keyframes pulse {
@@ -97,95 +373,138 @@
 
     }
 
-.total-box {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 18px;
-  color: #aaa;
-}
+    .total-box {
 
-    #totalCounter {
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-      display: inline-block;
-      min-width: 70px;
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      font-size: 18px;
+
+      color: #aaa;
+
     }
 
-    /* ========================= */
+    #totalCounter {
+
+      font-size: 20px;
+
+      font-weight: bold;
+
+      color: white;
+
+      min-width: 70px;
+
+    }
+
+    /* ===================================== */
     /* SEARCH */
-    /* ========================= */
+    /* ===================================== */
 
     .top-bar {
+
       display: flex;
       justify-content: center;
+
       margin-bottom: 25px;
+
     }
 
     #searchInput {
+
       width: 100%;
       max-width: 400px;
+
       padding: 14px 18px;
+
       border-radius: 12px;
+
       border: none;
+
       outline: none;
+
       font-size: 16px;
+
       background: #1e1e1e;
+
       color: white;
-      box-shadow: 0 0 10px rgba(255,255,255,0.05);
+
     }
 
-    /* ========================= */
+    /* ===================================== */
     /* TABLE */
-    /* ========================= */
+    /* ===================================== */
 
     table {
+
       width: 100%;
+
       border-collapse: collapse;
+
       overflow: hidden;
+
       border-radius: 18px;
+
       background: #161616;
+
     }
 
     thead {
+
       background: #222;
+
     }
 
     th {
+
       padding: 18px;
+
       text-align: center;
+
       font-size: 20px;
+
       letter-spacing: 1px;
+
       color: #bbb;
+
     }
 
     td {
+
       padding: 18px;
+
       border-top: 1px solid #262626;
+
       transition: 0.2s ease;
+
       text-align: center;
+
       font-size: 18px;
+
     }
 
     tr {
+
       transition: all 0.2s ease;
+
     }
 
     tr:hover {
+
       background: #202020;
+
       transform: scale(1.01);
+
     }
 
     .rank {
-      font-size: 22px;
-      font-weight: bold;
-      text-align: center;
-    }
 
-    /* ========================= */
-    /* TOP 3 */
-    /* ========================= */
+      font-size: 22px;
+
+      font-weight: bold;
+
+    }
 
     .top1 {
       background: rgba(255, 215, 0, 0.08);
@@ -199,49 +518,62 @@
       background: rgba(205, 127, 50, 0.08);
     }
 
-    /* ========================= */
-    /* LOADING */
-    /* ========================= */
+    /* ===================================== */
+    /* FORM */
+    /* ===================================== */
 
-    .loading {
-      text-align: center;
-      margin-top: 40px;
-      color: #999;
+    .form-container {
+
+      width: 100%;
+      max-width: 1100px;
+
+      margin: 100px auto 40px;
+
+      padding: 20px;
+
     }
 
-    .footer {
-      text-align: center;
-      margin-top: 25px;
-      color: #666;
-      font-size: 13px;
+    iframe {
+
+      border-radius: 24px;
+
+      background: white;
+
     }
 
-    /* ========================= */
+    /* ===================================== */
     /* MOBILE */
-    /* ========================= */
+    /* ===================================== */
 
     @media(max-width: 600px) {
+
+      .main-title {
+        font-size: 34px;
+      }
+
+      .home-card {
+
+        width: 220px;
+        height: 140px;
+
+        font-size: 22px;
+
+      }
 
       h1 {
         font-size: 30px;
       }
 
-      .stats-bar {
-        justify-content: center;
-      }
-
       td,
       th {
+
         padding: 14px 10px;
         font-size: 14px;
+
       }
 
       .rank {
         font-size: 18px;
-      }
-
-      #totalCounter {
-        font-size: 22px;
       }
 
     }
@@ -252,80 +584,181 @@
 
 <body>
 
-  <div class="container">
+  <!-- ===================================== -->
+  <!-- HOME SCREEN -->
+  <!-- ===================================== -->
 
-    <h1>🏆 Live Leaderboard</h1>
+  <div id="homeScreen" class="home-screen">
 
-    <!-- ========================= -->
-    <!-- LIVE COUNTER -->
-    <!-- ========================= -->
+    <h1 class="main-title">
+      🏆 SPEED DIAL CLUB
+    </h1>
 
-  <div class="stats-bar">
+    <div class="home-options">
 
-  <div class="live-indicator">
-    <span class="live-dot"></span>
-    LIVE
+      <div
+        class="home-card"
+        onclick="openLeaderboard()"
+      >
+        Leaderboard
+      </div>
+
+      <div
+        class="home-card"
+        onclick="openSubmissions()"
+      >
+        Submissions
+      </div>
+
+    </div>
+
   </div>
 
-<div class="total-box">
-  Total Referrals
-  <span id="totalCounter">0</span>
-</div>
+  <!-- ===================================== -->
+  <!-- PASSWORD -->
+  <!-- ===================================== -->
 
-</div>
+  <div
+    id="passwordOverlay"
+    class="password-overlay"
+  >
 
-    <!-- ========================= -->
-    <!-- SEARCH -->
-    <!-- ========================= -->
+    <div
+      id="passwordBox"
+      class="password-box"
+    >
 
-    <div class="top-bar">
+      <div class="password-title">
+        Enter Password
+      </div>
 
       <input
-        type="text"
-        id="searchInput"
-        placeholder="Search participant..."
-      />
+        type="password"
+        id="passwordInput"
+        class="password-input"
+        placeholder="Password"
+      >
+
+      <button
+        class="password-button"
+        onclick="checkPassword()"
+      >
+        Continue
+      </button>
 
     </div>
 
-    <!-- ========================= -->
-    <!-- TABLE -->
-    <!-- ========================= -->
+  </div>
 
-    <table>
+  <!-- ===================================== -->
+  <!-- APP -->
+  <!-- ===================================== -->
 
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Name</th>
-          <th>Referrals</th>
-        </tr>
-      </thead>
+  <div id="appContainer" class="hidden">
 
-      <tbody id="leaderboardBody">
-      </tbody>
+    <div class="top-nav">
 
-    </table>
+      <button onclick="switchTab('leaderboardTab')">
+        Leaderboard
+      </button>
 
-    <!-- ========================= -->
-    <!-- FOOTER -->
-    <!-- ========================= -->
+      <button onclick="switchTab('submissionsTab')">
+        Submissions
+      </button>
 
-    <div class="loading" id="loading">
-      Loading leaderboard...
     </div>
 
-    <div class="footer">
-      Auto-refreshes every 10 seconds ⚡
+    <!-- ===================================== -->
+    <!-- LEADERBOARD -->
+    <!-- ===================================== -->
+
+    <div id="leaderboardTab">
+
+      <div class="container">
+
+        <h1>🏆 Live Leaderboard</h1>
+
+        <div class="stats-bar">
+
+          <div class="live-indicator">
+            <span class="live-dot"></span>
+            LIVE
+          </div>
+
+          <div class="total-box">
+            Total Referrals
+            <span id="totalCounter">0</span>
+          </div>
+
+        </div>
+
+        <div class="top-bar">
+
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search participant..."
+          />
+
+        </div>
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Referrals</th>
+            </tr>
+          </thead>
+
+          <tbody id="leaderboardBody">
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+    <!-- ===================================== -->
+    <!-- SUBMISSIONS -->
+    <!-- ===================================== -->
+
+    <div
+      id="submissionsTab"
+      class="hidden"
+    >
+
+      <div class="form-container">
+
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLScc7ZKidNqpWC2akoP29DeIvMRxVwXcPlzPA2f3vlnadtGBFQ/viewform?embedded=true"
+          width="100%"
+          height="1100"
+          frameborder="0"
+        >
+          Loading…
+        </iframe>
+
+      </div>
+
     </div>
 
   </div>
 
   <script>
 
-    // ==========================================
-    // GOOGLE SHEET CONFIG
-    // ==========================================
+    // =====================================
+    // PASSWORD
+    // =====================================
+
+    const ACCESS_PASSWORD =
+      "GoogleAI";
+
+    // =====================================
+    // GOOGLE SHEET
+    // =====================================
 
     const SHEET_ID =
       "1L7aIIuPuPf6KMm0m9tcv1EdJWd3sxrmSpUeO7ybZaTA";
@@ -333,16 +766,160 @@
     const SHEET_NAME =
       "Leaderboard";
 
-    // ==========================================
-
     const API_URL =
       `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
 
     let leaderboardData = [];
 
-    // ==========================================
+    // =====================================
+    // HOMEPAGE FLOW
+    // =====================================
+
+    function openLeaderboard() {
+
+      document
+        .getElementById("passwordOverlay")
+        .style.display = "flex";
+
+    }
+
+    function openSubmissions() {
+
+      dissolveHome();
+
+      document
+        .getElementById("appContainer")
+        .classList.remove("hidden");
+
+      switchTab("submissionsTab");
+
+    }
+
+    function dissolveHome() {
+
+      history.replaceState(
+        null,
+        "",
+        "/Google-Campaign"
+      );
+
+      const home =
+        document.getElementById("homeScreen");
+
+      home.style.opacity = "0";
+
+      setTimeout(() => {
+
+        home.style.display = "none";
+
+      }, 600);
+
+    }
+
+    // =====================================
+    // PASSWORD CHECK
+    // =====================================
+
+    function checkPassword() {
+
+      const input =
+        document
+          .getElementById("passwordInput")
+          .value;
+
+      const box =
+        document
+          .getElementById("passwordBox");
+
+      if (input === ACCESS_PASSWORD) {
+
+        document
+          .getElementById("passwordOverlay")
+          .style.opacity = "0";
+
+        setTimeout(() => {
+
+          document
+            .getElementById("passwordOverlay")
+            .style.display = "none";
+
+          dissolveHome();
+
+          document
+            .getElementById("appContainer")
+            .classList.remove("hidden");
+
+          switchTab("leaderboardTab");
+
+        }, 350);
+
+      }
+
+      else {
+
+        box.classList.add("shake");
+
+        setTimeout(() => {
+
+          box.classList.remove("shake");
+
+        }, 350);
+
+      }
+
+    }
+
+    // =====================================
+    // SWITCH TABS
+    // =====================================
+
+    function switchTab(tabId) {
+
+      document
+        .getElementById("leaderboardTab")
+        .classList.add("hidden");
+
+      document
+        .getElementById("submissionsTab")
+        .classList.add("hidden");
+
+      document
+        .getElementById(tabId)
+        .classList.remove("hidden");
+
+      // UPDATE URL + TITLE
+
+      if (tabId === "leaderboardTab") {
+
+        history.replaceState(
+          null,
+          "",
+          "/Leaderboard"
+        );
+
+        document.title =
+          "Leaderboard";
+
+      }
+
+      if (tabId === "submissionsTab") {
+
+        history.replaceState(
+          null,
+          "",
+          "/Submissions"
+        );
+
+        document.title =
+          "Submissions";
+
+      }
+
+    }
+
+    // =====================================
     // FETCH DATA
-    // ==========================================
+    // =====================================
 
     async function fetchLeaderboard() {
 
@@ -354,14 +931,10 @@
         const data =
           await response.json();
 
-        // SORT DESCENDING
-
         data.sort((a, b) =>
           Number(b.Referrals) -
           Number(a.Referrals)
         );
-
-        // PRESERVE ORIGINAL RANKS
 
         leaderboardData =
           data.map((player, index) => ({
@@ -372,11 +945,7 @@
 
           }));
 
-        // RENDER TABLE
-
         renderLeaderboard(leaderboardData);
-
-        // UPDATE TOTAL COUNTER
 
         const total =
           getTotalReferrals(leaderboardData);
@@ -395,28 +964,19 @@
           total
         );
 
-        document
-          .getElementById("loading")
-          .style.display = "none";
-
       }
 
       catch (error) {
 
         console.error(error);
 
-        document
-          .getElementById("loading")
-          .innerHTML =
-          "Failed to load leaderboard.";
-
       }
 
     }
 
-    // ==========================================
-    // RANK DISPLAY
-    // ==========================================
+    // =====================================
+    // RANKS
+    // =====================================
 
     function getRankDisplay(rank) {
 
@@ -428,9 +988,9 @@
 
     }
 
-    // ==========================================
-    // TOTAL REFERRALS
-    // ==========================================
+    // =====================================
+    // TOTAL
+    // =====================================
 
     function getTotalReferrals(data) {
 
@@ -443,9 +1003,9 @@
 
     }
 
-    // ==========================================
-    // ANIMATE COUNTER
-    // ==========================================
+    // =====================================
+    // COUNTER ANIMATION
+    // =====================================
 
     function animateCounter(
       element,
@@ -489,9 +1049,9 @@
 
     }
 
-    // ==========================================
+    // =====================================
     // RENDER TABLE
-    // ==========================================
+    // =====================================
 
     function renderLeaderboard(data) {
 
@@ -538,42 +1098,54 @@
 
     }
 
-    // ==========================================
+    // =====================================
     // SEARCH
-    // ==========================================
+    // =====================================
 
     document
-  .getElementById("searchInput")
-  .addEventListener("input", function () {
+      .getElementById("searchInput")
+      .addEventListener("input", function () {
 
-    const value =
-      this.value.toLowerCase().trim();
+        const value =
+          this.value.toLowerCase().trim();
 
-    const filtered =
-      leaderboardData.filter(player => {
+        const filtered =
+          leaderboardData.filter(player => {
 
-        const playerName =
-          (player.Name || "")
-            .toLowerCase()
-            .trim();
+            const playerName =
+              (player.Name || "")
+                .toLowerCase()
+                .trim();
 
-        return playerName.includes(value);
+            return playerName.includes(value);
+
+          });
+
+        renderLeaderboard(filtered);
 
       });
 
-    renderLeaderboard(filtered);
+    // =====================================
+    // ENTER KEY
+    // =====================================
 
-  });
+    document
+      .getElementById("passwordInput")
+      .addEventListener("keypress", function(e) {
 
-    // ==========================================
-    // INITIAL LOAD
-    // ==========================================
+        if (e.key === "Enter") {
+
+          checkPassword();
+
+        }
+
+      });
+
+    // =====================================
+    // INITIALIZE
+    // =====================================
 
     fetchLeaderboard();
-
-    // ==========================================
-    // AUTO REFRESH
-    // ==========================================
 
     setInterval(fetchLeaderboard, 10000);
 
