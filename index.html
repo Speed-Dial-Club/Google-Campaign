@@ -250,13 +250,13 @@
       display: none;
     }
 
- #appContainer {
+    #appContainer {
 
-  padding: 110px 20px 40px;
+      padding: 110px 20px 40px;
 
-  animation: fadeIn 0.5s ease;
+      animation: fadeIn 0.5s ease;
 
-}
+    }
 
     .top-nav {
 
@@ -785,20 +785,6 @@
 
     function openSubmissions() {
 
-      dissolveHome();
-
-      document
-        .getElementById("appContainer")
-        .classList.remove("hidden");
-
-      switchTab("submissionsTab");
-
-    }
-
-    function dissolveHome() {
-
-   window.location.hash = "Google-Campaign";  
-
       const home =
         document.getElementById("homeScreen");
 
@@ -809,6 +795,12 @@
         home.style.display = "none";
 
       }, 600);
+
+      document
+        .getElementById("appContainer")
+        .classList.remove("hidden");
+
+      switchTab("submissionsTab");
 
     }
 
@@ -839,7 +831,16 @@
             .getElementById("passwordOverlay")
             .style.display = "none";
 
-          dissolveHome();
+          const home =
+            document.getElementById("homeScreen");
+
+          home.style.opacity = "0";
+
+          setTimeout(() => {
+
+            home.style.display = "none";
+
+          }, 600);
 
           document
             .getElementById("appContainer")
@@ -883,11 +884,12 @@
         .getElementById(tabId)
         .classList.remove("hidden");
 
-      // UPDATE URL + TITLE
+      // HASH ROUTING
 
       if (tabId === "leaderboardTab") {
 
-      window.location.hash = "Leaderboard";
+        window.location.hash =
+          "Leaderboard";
 
         document.title =
           "Leaderboard";
@@ -896,7 +898,8 @@
 
       if (tabId === "submissionsTab") {
 
-      window.location.hash = "Submissions";
+        window.location.hash =
+          "Submissions";
 
         document.title =
           "Submissions";
@@ -904,6 +907,49 @@
       }
 
     }
+
+    // =====================================
+    // RESTORE TAB FROM URL
+    // =====================================
+
+    window.addEventListener("load", () => {
+
+      const hash =
+        window.location.hash;
+
+      // LEADERBOARD
+
+      if (hash === "#Leaderboard") {
+
+        document
+          .getElementById("homeScreen")
+          .style.display = "none";
+
+        document
+          .getElementById("appContainer")
+          .classList.remove("hidden");
+
+        switchTab("leaderboardTab");
+
+      }
+
+      // SUBMISSIONS
+
+      if (hash === "#Submissions") {
+
+        document
+          .getElementById("homeScreen")
+          .style.display = "none";
+
+        document
+          .getElementById("appContainer")
+          .classList.remove("hidden");
+
+        switchTab("submissionsTab");
+
+      }
+
+    });
 
     // =====================================
     // FETCH DATA
